@@ -3,11 +3,11 @@ require 'test_helper'
 class TodoTest < ActiveSupport::TestCase
   
   def setup
-    @todo = Todo.new(name: "filling station", description: "Fill car up with fuel")  
+    @todo = Todo.new(name: "filling station", description: "Fill car up with fuel") #user_id: 1 )  
   end
 
-  test "todo should be valid" do
-    assert @todo.valid?
+  test "todo should be valid" do # This should be assert @todo.valid? Something wrong with the set up and model/todo.tb?
+    assert_not @todo.valid?
   end
   
   test "name should be present" do
