@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:index, :show]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  # before_action :require_user, except: [:index, :show]
+  # before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
     @todos = Todo.all
@@ -14,7 +14,7 @@ class TodosController < ApplicationController
   
   def create
     @todo = Todo.new(todo_params)
-    @todo.user = current_user
+    # @todo.user = current_user
     #@todo.user = User.first
     if @todo.save
       flash.now[:success] = "Todo was successfully created"
