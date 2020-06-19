@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  before_action :require_admin, except: [:index, :show]
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
   # before_action :require_user, except: [:index, :show]
   # before_action :require_same_user, only: [:edit, :update, :destroy]
@@ -63,6 +64,13 @@ class TodosController < ApplicationController
   def require_same_user
     if current_user != @todo.user and !current_user.admin?
       flash[:danger] = "You can only edit or delete your own Todos"
+      redirect_to todos_path
+    end
+  end
+
+  def require_admin 
+    if !(logged_in? && current_user.admin?)
+      flash[:alert] = "Only Admins can perform that action"
       redirect_to todos_path
     end
   end

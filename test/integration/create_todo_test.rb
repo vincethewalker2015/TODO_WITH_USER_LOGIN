@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class CreateTodoTest < ActionDispatch::IntegrationTest
+
+  setup do
+    @admin_user = User.create(name: "william", email: "william@yahoo.ca",
+                              password: "password", admin: true)
+    sign_in_as(@admin_user)
+  end
+
   test "Get New Todo Form and Create the Todo" do
       get "/todos/new"
       assert_response :success
