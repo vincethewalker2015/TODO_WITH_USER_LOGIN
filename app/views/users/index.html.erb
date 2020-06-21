@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <h1 align="center">Users</h1>
-    <h3 align="center">I am: <%= current_user.name %> <%= "(Admin)" if current_user.admin? %></h3>
+    <h3 align="center">I am: <%#= current_user.name %> <%#= "(Admin)" if current_user.admin? %></h3>
     <div align="center">
         <p>
             <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
             <%= link_to "log Out", login_path, method: :delete, class: "btn btn-danger fancy" %>
             <%= link_to "Todo List", todos_path, class: "btn btn-primary" %>
-            <%= link_to "My Profile", user_path(current_user), class: "btn btn-warning" %>
+            <%#= link_to "My Profile", user_path(current_user), class: "btn btn-warning" %>
         </p>
           <div align="center">
             
